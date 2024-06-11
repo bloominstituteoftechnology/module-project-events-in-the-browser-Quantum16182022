@@ -1,3 +1,5 @@
+
+
 // 👉 TASK 1 - Understand the existing code 👈
 function moduleProject2() {
   // 👇 WORK WORK BELOW THIS LINE 👇
@@ -70,6 +72,40 @@ function moduleProject2() {
 
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
+
+    console.log(evt.key)
+    let isUp = evt.key === evt.up
+    let isDown = evt.key === evt. Down
+    let isLeft = evt.key === evt.Left
+    let isRight = evt.key === evt.Right
+
+   let targeted = document.querySelector('.targeted')
+
+    if (isUp) {
+      console.log('you clicked isUp')
+    }else if (isDown) {
+      console.log('you clickedi isDown')
+      if (targeted.parentElement.nextElementSibling) {
+        console.log('can go down')
+    
+      }
+    }else if (isLeft) {
+      if (targeted.previousElementSibling) {
+        targeted.classList.remove('targeted')
+        targeted.previousElementSibling.classList.add('targeted')
+      }
+    }else if (isRight) {
+      if (targeted.previousElementSibling) {
+        targeted.classList.remove('targeted')
+        targeted.nextElementSibling.classList.add('targeted')
+        let idx = Array.from(targeted.parentElement.childrent).indexOf(targeted)
+        targeted.classList.remove('targeted')
+        targeted.parentElement.previousElementSibling.children[idx].classList.add('targeted')
+        
+      }
+      }
+     }
+
 
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
 
