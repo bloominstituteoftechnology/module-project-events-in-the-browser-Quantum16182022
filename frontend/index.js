@@ -1,4 +1,4 @@
-
+let e = moduleProject2('express')
 
 // 👉 TASK 1 - Understand the existing code 👈
 function moduleProject2() {
@@ -73,8 +73,8 @@ function moduleProject2() {
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
 
-    console.log(evt.key)
-    let isUp = evt.key === evt.up
+    
+    let isUp = evt.key === evt.Up
     let isDown = evt.key === evt. Down
     let isLeft = evt.key === evt.Left
     let isRight = evt.key === evt.Right
@@ -82,41 +82,62 @@ function moduleProject2() {
    let targeted = document.querySelector('.targeted')
 
     if (isUp) {
-      console.log('you clicked isUp')
+      if (targeted.parentElement.previousElementSibling) {
+        let idx = Array.from(targeted.parentElement.childrent).indexOf(targeted)
+        targeted.classList.remove('targeted')
+        targeted.parentElement.previousElementSibling.children[idx].classList.add('targeted')
     }else if (isDown) {
-      console.log('you clickedi isDown')
       if (targeted.parentElement.nextElementSibling) {
-        console.log('can go down')
-    
-      }
-    }else if (isLeft) {
+         let idx = Array.from(targeted.parentElement.childrent).indexOf(targeted)
+        targeted.classList.remove('targeted')
+        targeted.parentElement.nextElementSibling.children[idx].classList.add('targeted')
+      } 
+      }else if (isLeft) {
       if (targeted.previousElementSibling) {
         targeted.classList.remove('targeted')
         targeted.previousElementSibling.classList.add('targeted')
       }
     }else if (isRight) {
-      if (targeted.previousElementSibling) {
+      if (targeted.nextElementSibling) {
         targeted.classList.remove('targeted')
         targeted.nextElementSibling.classList.add('targeted')
-        let idx = Array.from(targeted.parentElement.childrent).indexOf(targeted)
-        targeted.classList.remove('targeted')
-        targeted.parentElement.previousElementSibling.children[idx].classList.add('targeted')
-        
-      }
-      }
-     }
-
+      
+    }
+  }
+    
 
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
+    if (isSpacebar) {
+      let mosquito = targeted.firstChild
+      if ( mosquito && mosquito.dataset.status === 'alive') {
+        mosquito.dataset.status = 'dead'
+        mosquito.parentElement. style.backgroundColor = 'red'
+      
+    } 
 
     // 👉 TASK 5 - End the game 👈
-    
-  })
-  // 👆 WORK WORK ABOVE THIS LINE 👆
+    let liveMosquitos = document.querySelector('[data-status=alive]')
+    if (liveMosquitos.length) {
+      let elapsed = getTimeElapsed()
+      document.querySelector('p.infor').textContent = 
+      `extermination.completed in ${ elapsed/1000} seconds`
+
+      let restartBtn = document.createElement('button')
+    }restartBtn.textContent = 'Restart'
+    restartBtn.addEventListener('click, (') => {
+      location.reload
+    })
+    document.querySelector('h2').insertAdjacentElement('beforeend',restartBtn)
+  }
 }
+}
+
+  // 👆 WORK WORK ABOVE THIS LINE 👆
+
 
 // ❗ DO NOT MODIFY THE CODE BELOW
 // ❗ DO NOT MODIFY THE CODE BELOW
 // ❗ DO NOT MODIFY THE CODE BELOW
 if (typeof module !== 'undefined' && module.exports) module.exports = { moduleProject2 }
 else moduleProject2()
+  }
