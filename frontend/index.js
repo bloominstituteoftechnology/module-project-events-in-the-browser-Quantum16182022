@@ -1,4 +1,4 @@
-let e = moduleProject2('express')
+`let e = moduleProject2()`
 
 // 👉 TASK 1 - Understand the existing code 👈
 function moduleProject2() {
@@ -70,20 +70,20 @@ function moduleProject2() {
     allSquares[randomInt].appendChild(mosquito)
   })
 
-  document.addEventListener('keydown', evt => {
+  document.addEventListener('keydown'), evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
-
     
-    let isUp = evt.key === evt.Up
-    let isDown = evt.key === evt. Down
-    let isLeft = evt.key === evt.Left
-    let isRight = evt.key === evt.Right
-
+    
+    let isUp = evt.key === keys.Up
+    let isDown = evt.key === keys. Down
+    let isLeft = evt.key === keys.Left
+    let isRight = evt.key === keys.Right
+    
    let targeted = document.querySelector('.targeted')
 
     if (isUp) {
       if (targeted.parentElement.previousElementSibling) {
-        let idx = Array.from(targeted.parentElement.childrent).indexOf(targeted)
+        let idx = Array.from(targeted.parentElement.children).indexOf(targeted)
         targeted.classList.remove('targeted')
         targeted.parentElement.previousElementSibling.children[idx].classList.add('targeted')
     }else if (isDown) {
@@ -107,6 +107,7 @@ function moduleProject2() {
     
 
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
+    let isSpacebar = evt.key === keys.space
     if (isSpacebar) {
       let mosquito = targeted.firstChild
       if ( mosquito && mosquito.dataset.status === 'alive') {
@@ -116,22 +117,26 @@ function moduleProject2() {
     } 
 
     // 👉 TASK 5 - End the game 👈
-    let liveMosquitos = document.querySelector('[data-status=alive]')
-    if (liveMosquitos.length) {
-      let elapsed = getTimeElapsed()
-      document.querySelector('p.infor').textContent = 
-      `extermination.completed in ${ elapsed/1000} seconds`
+    let liveMosquitos = document.querySelectorAll('[data-status=alive]');
 
-      let restartBtn = document.createElement('button')
-    }restartBtn.textContent = 'Restart'
-    restartBtn.addEventListener('click, (') => {
-      location.reload
-    })
-    document.querySelector('h2').insertAdjacentElement('beforeend',restartBtn)
+if (liveMosquitos.length) {
+  let elapsed = getTimeElapsed();
+
+  document.querySelector('p.infor').textContent =
+    `Extermination completed in ${elapsed/1000} seconds`;
+
+  let restartBtn = document.createElement('button');
+  restartBtn.textContent = 'Restart';
+
+  restartBtn.addEventListener('click', () => {
+    location.reload();
+  });
+
+  document.querySelector('h2').insertAdjacentElement('beforeend', restartBtn);
+}
+    }
   }
 }
-}
-
   // 👆 WORK WORK ABOVE THIS LINE 👆
 
 
@@ -140,4 +145,4 @@ function moduleProject2() {
 // ❗ DO NOT MODIFY THE CODE BELOW
 if (typeof module !== 'undefined' && module.exports) module.exports = { moduleProject2 }
 else moduleProject2()
-  }
+}
